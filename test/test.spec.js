@@ -23,18 +23,18 @@ describe('Insights Service', () => {
     });
   });
   describe('/cashflow', () => {
-    context('it is yet to be implemented', () => {
-      it('should return a 501 error', async () => {
+    context('can receive the json data', () => {
+      it('should return a 200 ok', async () => {
         const response = await request('/cashflow');
-        response.statusCode.should.equal(501);
+        response.statusCode.should.equal(200);
       });
     });
   });
   describe('/merchants', () => {
-    context('it is yet to be implemented', () => {
-      it('should return a 501 error', async () => {
+    context('can receive the json data', () => {
+      it('should return a 200 ok', async () => {
         const response = await request('/merchants');
-        response.statusCode.should.equal(501);
+        response.statusCode.should.equal(200);
       });
     });
   });
