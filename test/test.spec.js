@@ -8,17 +8,17 @@ async function request(path) {
     url: `http://localhost:3000/insights/${path}`,
     method: 'GET',
     json: true,
-    resolveWithFullResponse: true, // promise resolves with full response not just body. 
+    resolveWithFullResponse: true, // promise resolves with full response not just body.
     simple: false   // ensures promise resolves even if statusCode is not 200 series.
   });
 }
 
 describe('Insights Service', () => {
   describe('/categories', () => {
-    context('it is yet to be implemented', () => {
-      it('should return a 501 error', async () => {
+    context('can receive the json data', () => {
+      it('should return a 200 ok', async () => {
         const response = await request('/categories');
-        response.statusCode.should.equal(501);
+        response.statusCode.should.equal(200);
       });
     });
   });
