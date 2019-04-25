@@ -4,7 +4,7 @@ const transactionFilter = require('../transactionFilter.js')
 
 router.get('/categories', async (req, res, next) => {
   try {
-    transactionFilter(res);
+    transactionFilter(res, 'category');
   } catch (err) {
     return next(err);
   }
@@ -12,7 +12,7 @@ router.get('/categories', async (req, res, next) => {
 
 router.get('/cashflow', async (req, res, next) => {
   try {
-    res.status(501).json({ message: 'Not Implemented' });
+    transactionFilter(res, 'paymentDate');
   } catch (err) {
     return next(err);
   }

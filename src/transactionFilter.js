@@ -1,5 +1,5 @@
 
-function transactionFilter(res){
+function transactionFilter(res, filterType){
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var request = new XMLHttpRequest();
   request.addEventListener("load", master_listener);
@@ -10,7 +10,7 @@ function transactionFilter(res){
     var categories = {}
 
     for (var i = 0; i < data.length; i++) {
-      var key = data[i]['category'];
+      var key = data[i][filterType];
       if (categories[key]) {
         categories[key]['totalNumber'] += 1
         categories[key]['totalValue'] += data[i]['amount']
