@@ -2,7 +2,6 @@
 function transactionFilter(res, filterType){
   var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
   var request = new XMLHttpRequest();
-  var dateFormat = require('dateformat');
 
   request.addEventListener("load", master_listener);
   request.open('GET', 'https://transactions.spokedev.xyz/transactions');
@@ -12,11 +11,7 @@ function transactionFilter(res, filterType){
     var categories = {}
 
     for (var i = 0; i < data.length; i++) {
-      if (filterType === 'paymentDate') {
-        var key = dateFormat(data[i][filterType], "dd/mm/yyyy");
-      }  else {
-      var key = data[i][filterType];
-      }
+      var key = formatDate(data, filterType, i);
       if (categories[key]) {
         categories[key]['totalNumber'] += 1
         categories[key]['totalValue'] += data[i]['amount']
@@ -27,6 +22,17 @@ function transactionFilter(res, filterType){
     }
     res.send(categories);
   }
+}
+
+function formatDate(data, filterType, i) {
+  var dateFormat = require('dateformat');
+
+  if (filterType === 'paymentDate') {
+    var key = dateFormat(data[i][filterType], "dd/mm/yyyy");
+  }  else {
+  var key = data[i][filterType];
+  }
+  return key
 }
 
 module.exports = transactionFilter;
