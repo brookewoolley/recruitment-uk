@@ -10,7 +10,16 @@ router.get('/categories', async (req, res, next) => {
     request.send();
     function master_listener() {
       var data = JSON.parse(this.responseText)
-      res.send(data);
+      var categories = {}
+
+      for (var i = 0; i < data.length; i++) {
+        var key = data[i]['category'];
+        if (categories[key]) {
+        } else {
+          categories[key] = {totalNumber: 1, totalValue: data[i]['amount'], averageValue: data[i]['amount']}
+        }
+      }
+      res.send(categories);
     };
   } catch (err) {
     return next(err);
