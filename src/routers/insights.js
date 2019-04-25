@@ -15,6 +15,7 @@ router.get('/categories', async (req, res, next) => {
       for (var i = 0; i < data.length; i++) {
         var key = data[i]['category'];
         if (categories[key]) {
+          categories[key]['totalNumber'] += 1
         } else {
           categories[key] = {totalNumber: 1, totalValue: data[i]['amount'], averageValue: data[i]['amount']}
         }
