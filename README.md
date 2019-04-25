@@ -1,6 +1,12 @@
+# Elliot Jennings & Brooke Woolley
+
+This is our repo to try to complete the challenge below.  We focused on functionality and reusable code over TDD due to the timescale.  We have full functionality for categories and merchants, we are returning dates with correct values for cashflow.  If we had more time we would have added a loop for adding dates with no transactions and have sorted the data in date order.
+
+For testing we would have mocked the response, allowing us to run the server.
+
 # Insights Service
 
-As part of out latest MVP build we need to present a user with some insights about their spending. We need to build a server that returns JSON formatted insights. A list of transactions for a user can be retrieved at `GET https://transactions.spokedev.xyz/transactions`. (Make sure you use https!!!). The server should fetch this list, then calculate the insights below, and return them in the body of the response with a 200 response code. 
+As part of out latest MVP build we need to present a user with some insights about their spending. We need to build a server that returns JSON formatted insights. A list of transactions for a user can be retrieved at `GET https://transactions.spokedev.xyz/transactions`. (Make sure you use https!!!). The server should fetch this list, then calculate the insights below, and return them in the body of the response with a 200 response code.
 
 The api returns an array of transactions:
 
@@ -27,7 +33,7 @@ From this list we'll need to build a server that exposes the following routes, w
 
 1. `GET /insights/categories`
 
-User Story: 
+User Story:
 ```
 As a User
 So that I can gain an understanding of my finances
@@ -57,7 +63,7 @@ So that I can gain an understanding of if i will run out of money
 I want to see a breakdown of my spending by month
 ```
 
-returns a daily cashflow of all transactions grouped by day. For days on which there is no data return 0 for all fields. 
+returns a daily cashflow of all transactions grouped by day. For days on which there is no data return 0 for all fields.
 
 ```json
 {
